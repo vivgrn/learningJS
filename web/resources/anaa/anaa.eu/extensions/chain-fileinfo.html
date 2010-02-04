@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Demo of fileinfo by chaining POST and GET</title>
+
+<script src="anaa.js" type="text/javascript"></script>
+<script language="JavaScript">
+
+	function display(content, element)
+	{
+		content = content.replace(/\n/, "<br>");
+		element.innerHTML = content;
+	}
+
+	function retrieve()
+	{
+		var storing = document.getElementById("storage");
+		AARead("fileinfo.txt", display, storing);
+	}
+
+	function submitForm()
+	{ 
+		var content = document.ajax.filename.value;
+		AAWrite("chain-fileinfo.php", "url=" + content, retrieve);
+	} 
+
+</script>
+
+</head>
+
+	
+<body bgcolor="#FFFFFF">
+<h1>File Info By Chaining Ajax Requests</h1>
+<h2>Request infos about a file by chaining POST to execute a PHP script and GET 
+  to retrieve the results.</h2>
+
+<p>This demo is the Ajax version of the file info demo.<br>
+  It makes use of a <a href="chain-fileinfo-php.txt" target="_parent">PHP script</a> 
+  with a POST Ajax command for retrieving the info with PHP functions.<br>
+  Then, a second request, that is a simple Ajax GET command, loads the &quot;fileinfo.txt&quot; 
+  text file produced by the PHP script.</p>
+<p>The JavaScript source may be viewed at top of the source of this page.<br>
+</p>
+<p> Type the URL of a file:</p>
+<FORM name="ajax" method="POST" action="">
+  <p>
+    <input type="text" name="filename" value="chain-fileinfo.html" size="80">
+    <INPUT type="button" value="Retrieve"  ONCLICK="submitForm()">
+  </p>
+</FORM>
+
+<div id="storage">
+Empty.
+</div>	
+
+
+<p> (c) <a href="http://www.anaa.eu" target="_parent">Anaa.eu</a> </p>
+</body>
+</html>

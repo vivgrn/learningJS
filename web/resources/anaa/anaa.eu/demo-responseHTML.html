@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The responseHTML attribute, extension to Ajax from the Anaa framework.</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<!-- THE CODE FOR YOUR PAGE STARTS HERE -->
+
+<script src="anaa.js" type="text/javascript"></script>
+<script language="JavaScript">
+	function processHTML(temp, target)
+	{
+		target.innerHTML = temp.innerHTML;
+	}
+	function displayHTML(url, storageID, viewedID )
+	{
+		var x = document.getElementById(viewedID);
+		AALoadHTML(url, processHTML, storageID, x);
+	}
+</script>
+
+<!-- THE CODE ENDS HERE -->
+
+<div id="storage" style="display:none;">
+</div>
+
+
+
+<h1>Anaa Demo - The responseHTML function</h1>
+Load the <b><a href="anaa-functions.html" target="_parent">anaa-functions.html</a></b> 
+web page, read the content and display it below... 
+<FORM name="ajax" method="POST" action="">
+	<p>
+		
+    <INPUT type="BUTTON" value="Display data from another web page"  ONCLICK="displayHTML('anaa-functions.html', 'storage', 'displayed');">
+	</p>
+		
+</FORM>
+
+<div id="displayed">Empty...
+</div>
+
+	
+<p>&nbsp;</p>
+
+<p>(c) 2007 <a href="http://www.anaa.eu" target="_parent">Anaa.eu</a>.<br>
+  From the article <a href="http://www.xul.fr/ajax/responseHTML-attribute.html" target="_parent">Why 
+  not responseHTML?</a> on xul.fr.</p>
+
+
+</body>
+</html>

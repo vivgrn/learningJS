@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Anaa, demo of get from plain text</title>
+
+<script src="anaa.js" type="text/javascript"></script>
+<script language="JavaScript">
+
+	function storing(data, element)
+	{
+		// process a XML document here
+		var x = data.getElementsByTagName('root').item(0);
+		element.innerHTML = x.firstChild.data;
+	}
+
+	function submitForm(element)
+	{ 
+		AARead("demo-get.xml", storing, element);
+	} 
+</script>
+
+</head>
+
+	
+<body bgcolor="#FFFFCC">
+<h1>Anaa Framework - Demo of Get for XML </h1>
+
+<p>Load the <b><a href="demo-get.xml" target="_parent">demo-get.xml</a></b> file 
+  and store the content into the field below. </p>
+<p> <span id="storage"> ***Must be stored here***. </span> </p>
+
+<FORM name="ajax" method="POST" action="">
+	<p>
+	<INPUT type="button" value="Submit"  ONCLICK="submitForm(document.getElementById('storage'))">
+	</p>
+</FORM>
+	
+<p>
+(c) <a href="http://www.anaa.eu" target="_parent">Anaa.eu</a><br />
+  (c) From tutorials by<a href="http://www.xul.fr/en/" target="_parent"> xul.fr</a>.</p>
+</body>
+</html>

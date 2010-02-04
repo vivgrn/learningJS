@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Anaa, demo of chaining several Ajax requests, POST and GET actually</title>
+
+<script src="anaa.js" type="text/javascript"></script>
+<script language="JavaScript">
+
+	function display(content, element)
+	{
+		element.innerHTML = content;
+	}
+
+	function retrieve()
+	{
+		var storing = document.getElementById("storage");
+		AARead("demo-post.txt", display, storing);
+	}
+
+	function submitForm()
+	{ 
+		var content = document.ajax.sentence.value;
+		AAWrite("demo-chain.php", "file=demo-post.txt&content=" + content, retrieve);
+	} 
+
+</script>
+
+</head>
+
+	
+<body bgcolor="#FFFFFF">
+<h1>Anaa Framework - Chaining Request Demo</h1>
+<h2>Send data to a script, and when executed, read the results from a file.</h2>
+
+This demo shows how you can chain several Ajax requests. It makes use of a <a href="demo-chain-php.txt" target="_parent">PHP 
+script</a> as the POST demo page does.<br>
+Data are sent to the script that stores them into a text file, and then a second 
+request reads this file.<br>
+The goal is to deliver data to a program for performing some processing on them 
+and then to retrieve the results.<br>
+<p> For security issue, the name of this data file must be defined on the server 
+  and identified by the script.</p>
+<p>In this demo, the text you will type below, is converted to uppercases and 
+  displayed on this page.</p>
+<FORM name="ajax" method="POST" action="">
+  <p>
+    <input type="text" name="sentence" value="I believe it is not possible to prove anything. But I can't prove it." size="80">
+    <INPUT type="button" value="Submit"  ONCLICK="submitForm()">
+  </p>
+</FORM>
+
+<div id="storage">
+Empty.
+</div>	
+
+
+<p>
+(c) <a href="http://www.anaa.eu" target="_parent">Anaa.eu</a><br />
+  (c) From tutorials by<a href="http://www.xul.fr" target="_parent"> xul.fr</a>. 
+</p>
+</body>
+</html>
